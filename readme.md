@@ -1,9 +1,17 @@
 ## Code Style Guide
 
-为了更好的协作，在代码格式上，作如下约定：
+「It's dangerous to go alone」，为了更好的协作，在新生产的代码或者在约定生效之后被修改的旧代码，作如下约定：
 
 - 缩进：不混用 space 和 tab，在前端代码中使用 2-spaces 缩进
 - 编码：UTF-8 ( no BOM ) 
+- 在需要后续修改的代码，最好注释 TODO
+
+```js
+// TODO: blah blah bla...
+function hello() {
+  // ...
+}
+```
 
 ### ## 前端相关
 
