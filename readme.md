@@ -1,4 +1,4 @@
-## Code Style Guide
+## 饿了么代码格式指南
 
 **It's dangerous to go alone**，为了更好的协作，在新生产的代码或者在约定生效之后被修改的旧代码，作如下约定：
 
@@ -13,7 +13,7 @@ function hello() {
 }
 ```
 
-### ## 前端相关
+### # 前端相关
 
 - Style Guide: [HTML](html.md) / [CSS](css.md) / [JavaScript](javascript.md)
 - 兼容浏览器
