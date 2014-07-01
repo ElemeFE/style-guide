@@ -11,10 +11,10 @@
 
 ```html
 <!-- 不推荐 -->
-<button ng-click='hi(":)")'>Hi</button>
+<button ng-click='hi(":-|")'>Hi</button>
 
 <!-- 推荐 -->
-<button ng-click="hi(':)')">Hi</button>
+<button ng-click="hi(':-|')">Hi</button>
 ```
 
 ### 3. 编码
