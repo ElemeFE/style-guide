@@ -1,11 +1,11 @@
 # ELEME CSS/LESS/SASS Style Guide
 
-1. [基本约定](1.-基本约定)
-2. [书写规范](2.-书写规范)
-3. [命名](3.-命名)
-4. [组织](4.-组织)
-5. [注释](5.-注释)
-6. [HACK](6.-HACK)
+1. [基本约定](#1.-基本约定)
+2. [书写规范](#2.-书写规范)
+3. [命名](#3.-命名)
+4. [组织](#4.-组织)
+5. [注释](#5.-注释)
+6. [HACK](#6.-HACK)
 
 ## 1. 基本约定
 
@@ -103,7 +103,7 @@
       display: none;
     }
     ```
-6. 有嵌套时，优先写`&:hover`等伪类，其次`&.class`，再次`> .class`，最次`  .class `
+6. 有嵌套时，优先写`&:hover`等伪类，其次`&.class`，再次`> .class`，最次`  .class`。
     ``` sass
     // EXAMPLE
     .block
@@ -169,6 +169,10 @@
      * .profile-user-introduction-text
      * => .pusr-intro-txt || .pusr-itxt
      */
+    .rmenu-list
+      margin: 10px
+    .pusr-intro-txt
+      font-size: 16px
     ```
 4. class的第一个单词通常为父级元素或module的名字，避免用常见classname
     ``` css
@@ -281,7 +285,7 @@ css/
 
 ## 5. 注释
 
-1. 模块注释用`/* ... */`， 单行注释用`// ...`
+1. 模块注释用`/* ... */`， 单行注释用`// ...`。
     ``` sass
     /*
      * Linear Gradient Mixin
@@ -289,12 +293,12 @@ css/
      * browser support: webkit, webkit legacy, standard
      * with flat background fallback
      */
-    =linear-gradient($deg, $color1, $color2, $fallback: "")
+    @linear-gradient($deg, $color1, $color2, $fallback: "")
       // getMiddleColor() returns one middle color
       background-color: getMiddleColor($c1, $c2, $fallback)
       ...
     ```
-2. 开发过程中经常使用使用关键字`TODO`、`FIXME`、`XXX`
+2. 开发过程中经常使用使用关键字`TODO`、`FIXME`、`XXX`。
     ```
     /* TODO: How about auto-correcting small spelling errors? */
     /* FIXME: This won't work if the file is missing. */
