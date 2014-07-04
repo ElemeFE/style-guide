@@ -1,13 +1,20 @@
 # ELEME CSS/LESS/SASS Style Guide
 
-## 基本约定
+1. [基本约定](1.-基本约定)
+2. [书写规范](2.-书写规范)
+3. [命名](3.-命名)
+4. [组织](4.-组织)
+5. [注释](5.-注释)
+6. [HACK](6.-HACK)
+
+## 1. 基本约定
 
 - js用class必须只能用下划线`_`来分割单词：`.submit_btn`
 - css样式用class必须用连字符`-`分割单词：`.rst-comment-btn`
 - js/css共用class必须加`.ui_`前缀并且只能用下划线`_`分割单词：`.ui_disabled`
 - 在css里尽量避免用id，以便class覆盖，少用`!important`
 
-## 1. 书写规范
+## 2. 书写规范
 
 1. 缩进**1 tab = 2 spaces**。
 2. 选择器和`{`之间必须有空格，`display:`和value间必须有空格，`}`必须单独一行。
@@ -67,7 +74,7 @@
     ```
 5. 过多层级影响渲染效率，所以尽量把class层级控制在三层内。
     参考：[efficiently rendering css](http://css-tricks.com/efficiently-rendering-css/)、[css explan](https://josh.github.io/css-explain/)。
-    ``` less
+    ``` scss
     // DEPRECATED
     form {
       padding: 10px;
@@ -136,12 +143,12 @@
                   3px 3px 0 rgba(#000, 0.4),
                   4px 4px 0 rgba(#000, 0.5);
     }
-        ```
+    ```
 
-## 命名
+## 3. 命名
 
 1. 不用拼音
-2. 把信息装到名字里，用具体对象名字来命名（[patch class](#patch-class)除外），不用css样式来命名。
+2. 把信息装到名字里，用具体对象名字来命名（patch class除外），不用css样式来命名。
     ``` css
     // DEPRECATED
     .a {}
@@ -154,7 +161,7 @@
     .highlight-title {}
     ```
 3. 在class名字太长的时候，可以缩写，缩写规则基本为取单词缩写或首字母。
-    ``` css
+    ``` sass
     // EXPAMPLE
     /*
      * .restaurant-menu-list
@@ -229,7 +236,7 @@
     <div class="p10 mb10 group"></div>
     ```
 
-## 组织
+## 4. 组织
 
 1. 基本css组织方式按照业务逻辑，桌面端除全局一份基础css文件外，一个功能模块一份配置css文件；移动端网站一份css文件；单页活动、app内嵌网页每页一份css。
 2. sass项目中，以`module_name.sass`作为一份配置文件（Primary file），实际样式文件放在`ModuleName`文件夹下，并以前缀下划线的方式命名`_file_name.sass`（partial file）。
@@ -272,7 +279,7 @@ css/
 ...
 ```
 
-## 注释
+## 5. 注释
 
 1. 模块注释用`/* ... */`， 单行注释用`// ...`
     ``` sass
@@ -295,7 +302,7 @@ css/
     ```
 
 
-## HACK
+## 6. HACK
 
 1. 能不写hack就不写hack，IE下的排版问题大多是代码里的问题，并不一定需要hack，从重写代码入手解决。
 2. 只在用css3的新特性时考虑hack，并且正确使用modernizr进行优雅回退。
