@@ -19,6 +19,6 @@ function hello() {
 - 兼容浏览器
   <table>
   <tr><th>平台</th><th>浏览器</th></tr>
-  <tr><td>**Desktop**</td><td>IE8+ / FireFox / Chrome / Safari</td></tr>
-  <tr><td>**Mobile**</td><td>WP8+ / Mobile Safari</td></tr>
+  <tr><td>**Desktop**</td><td>IE8+ / FireFox / Chrome / Safari / 其他Webkit内核（360安全、360极速、遨游、搜狗、百度、qq、猎豹等）</td></tr>
+  <tr><td>**Mobile**</td><td>WP8+ / Mobile Safari / Android Broser / 其他（UC、QQ、Chrome、Opera Standard等） </td></tr>
   </table>
