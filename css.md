@@ -1,11 +1,11 @@
 # ELEME CSS/LESS/SASS Style Guide
 
-1. [基本约定](#1.-基本约定)
-2. [书写规范](#2.-书写规范)
-3. [命名](#3.-命名)
-4. [组织](#4.-组织)
-5. [注释](#5.-注释)
-6. [HACK](#6.-HACK)
+1. [基本约定](#1-基本约定)
+2. [书写规范](#2-书写规范)
+3. [命名](#3-命名)
+4. [组织](#4-组织)
+5. [注释](#5-注释)
+6. [HACK](#6-HACK)
 
 ## 1. 基本约定
 
@@ -280,7 +280,6 @@ css/
 |   |-- _normalize.scss
 |   |-- _jquery.ui.core.scss
 |   ...
-...
 ```
 
 ## 5. 注释
@@ -296,10 +295,9 @@ css/
     @linear-gradient($deg, $color1, $color2, $fallback: "")
       // getMiddleColor() returns one middle color
       background-color: getMiddleColor($c1, $c2, $fallback)
-      ...
     ```
 2. 开发过程中经常使用使用关键字`TODO`、`FIXME`、`XXX`。
-    ```
+    ``` css
     /* TODO: How about auto-correcting small spelling errors? */
     /* FIXME: This won't work if the file is missing. */
     /* XXX: This method badly needs refactoring: should switch by core type. <mbp> */
