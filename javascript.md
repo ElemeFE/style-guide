@@ -123,7 +123,7 @@ var array = new Array();
   
 // 推荐
 var str = '';
-var  obj = {};
+var obj = {};
 var array = [];
 ```
 
