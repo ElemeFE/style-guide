@@ -4,11 +4,11 @@
 
 ### 空白
 
-在 `=` 和各类操作符 ( `&&` `||` `+` 等) 的前后添加空格，在非行末的 `,` `;` `}` 后添加空格，在 `{` 前添加空格。并在每个逻辑块中间添加空白行：
+在二元和三元运算符的符号与操作数之间添加空格，在非行末的 `,` `;` `}` 后添加空格，在 `{` 前添加空格。并在每个逻辑块中间添加空白行：
 
 ```js
 // 不推荐
-var foo='bar',hello=foo+2;
+var foo='bar',hello=foo+2,test=true;
 function hi(){
   // ...
 }
@@ -16,13 +16,14 @@ if(foo&&hello){
   // ...
 }else if(foo){
   // ...
-}else{
+}else if(! test){
   // ...
 }
 
 // 推荐
 var foo = 'bar';
 var hello = foo + 2;
+var test = true;
 
 function hi(arg1, arg2) {
   // ...
@@ -32,7 +33,7 @@ if(foo && hello) {
   // ...
 } else if(foo) {
   // ...
-} else {
+} else if(!test) {
   // ...
 }
 ```
@@ -70,7 +71,7 @@ if(foo) {
 
 如果变量有初始赋值则使用单独的 `var`：
 
-```
+```js
 // 不推荐
 var hello = 1, world = 2;
 
