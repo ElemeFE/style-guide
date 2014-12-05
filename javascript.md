@@ -87,22 +87,6 @@ if(foo) doSomething();
 for(var i = 0; i < 10; i++) doSomething();
 ```
 
-
-### var 语句
-
-如果变量有初始赋值则使用单独的 `var`：
-
-```js
-// 不推荐
-var hello = 1, world = 2;
-
-// 推荐
-var hello = 1;
-var world = 2;
-var foo, fee, fxx;
-```
-
-
 ### 变量的命名
 
 使用以小写字母开头的驼峰命名（camelCase）法：
@@ -150,7 +134,26 @@ var udf = void 0;
 
 ### 比较
 
-没有特殊需求的情况下建议使用 `===`/`!==` 而非 `==`/`!=`。
+建议使用 `===`/`!==` 而非 `==`/`!=`。
+
+```js
+// 不推荐
+function foo(a) {
+  if(a == 123) {
+    // ...
+  }
+}
+
+// 推荐
+function foo(a) {
+  a = Number(a);
+  if(a === 123) {
+    // ...
+  }
+}
+```
+
+`==` 的规则比较复杂，大家可能记不住。
 
 ```js
 var a = '';
@@ -162,15 +165,6 @@ if(a === 0);
 if(a == 0);
 ```
 
-如果确实需要 `==` 的功能就别 `===`。
-```js
-if(a === undefined || a === null);
-
-等价于
-
-if(a == null);
-```
-
 对于可能不存在的全局引用可以先做如此判断：
 
 ```js
@@ -180,14 +174,63 @@ if('localStorage' in self){
 };
 ```
 
-禁止出现“可能不存在的局部引用”：
+### var 语句
+
+如果变量有初始赋值则使用单独的 `var`：
+
+```js
+// 不推荐
+var hello = 1, world = 2;
+
+// 推荐
+var hello = 1;
+var world = 2;
+var foo, fee, fxx;
+```
+
+### 函数定义
+
+建议使用表达式来定义函数，而不是函数语句。
+
+```js
+// 不推荐
+function fee(){
+  // ...
+}
+
+// 推荐
+var foo=function() {
+  // ...
+};
+```
+
+因为函数语句是在进入作用域时声明，破坏了程序从上到下的执行顺序。可能出现定义在 `return` 后的情况。
+
 ```js
 void function() {
-  if(a) {
-    eval('var b=0');
-  }
-  // 此处变量 b 的存在性不可确定
+  // 此处可以正常使用函数，但逻辑不清晰
+  foo();
+  
+  return null;
+  
+  function foo() {};
 }();
+
+```
+
+只引用一次的函数建议匿名定义，因为名称存在主观因素。
+
+```js
+// 不推荐
+var foo = function() {
+  // ...
+};
+element.onclick = foo;
+
+// 推荐
+element.onclick=function() {
+  // ...
+};
 ```
 
 ### 自执行函数
@@ -285,6 +328,3 @@ if(true) {
   };
 }
 ```
-
-
-
