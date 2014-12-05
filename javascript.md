@@ -47,18 +47,28 @@ if(foo && hello) {
 
 ### 注释
 
-使用 `//` 作为注释符，可以使用 `/* */` 作为多行注释符。注释的位置尽量放在代码之上：
-
+使用 `//` 作为注释符，可以使用 `/* */` 作为多行注释符。注释符号与注释内容之间留空，注释的位置尽量放在代码之上：
 
 ```js
-var foo, hello; // 不推荐
+/*不推荐*/
+//不推荐
+; // 不推荐
 
+/* 推荐 */
 // 推荐
-var foo, hello;
+; 
 ```
 
+建议在今后需要完善的代码中注释以 `//TODO`。
 
-### 不要为花括号另开一行
+```js
+if(true) {
+  console.log("尚未实现");
+  // TODO
+}
+```
+
+### 不要为打括号另开一行
 
 ```js
 // 不推荐
@@ -71,6 +81,10 @@ if(foo)
 if(foo) {
   // ...
 }
+
+// 只有一行语句时允许不带括号
+if(foo) doSomething();
+for(var i = 0; i < 10; i++) doSomething();
 ```
 
 
@@ -82,7 +96,7 @@ if(foo) {
 // 不推荐
 var hello = 1, world = 2;
 
-//推荐
+// 推荐
 var hello = 1;
 var world = 2;
 var foo, fee, fxx;
@@ -107,6 +121,7 @@ var fooBar = 'hello eleme';
  ```js
 // 不推荐
 var prefix = 'http://api.ele.me/v1/';
+var Prefix = 'http://api.ele.me/v1/'
   
 // 推荐
 var PREFIX = 'http://api.ele.me/v1/';
@@ -125,10 +140,115 @@ var array = new Array();
 var str = '';
 var obj = {};
 var array = [];
+
+// 这里顺便普及一些高性能写法
+// var nan = NaN;
+var nan = 0 / 0;
+// var inf = Infinity;
+var inf = 1 / 0;
+// var undef = undefined;
+var udf = void 0;
 ```
 
 
 ### 比较
 
-没有特殊需求的情况下建议使用 `===` / `!==` 而非 `==` / `!=`。
+没有特殊需求的情况下建议使用 `===`/`!==` 而非 `==`/`!=`。
+
+```js
+var a = '';
+
+// false
+if(a === 0);
+
+// true
+if(a == 0);
+```
+
+如果确实需要 `==` 的功能就别 `===`。
+```js
+if(a === undefined || a === null);
+
+等价于
+
+if(a == null);
+```
+
+对于可能不存在的全局引用可以先做如此判断：
+
+```js
+if('localStorage' in self){
+  // 此时访问 localStorage 绝对不会出现引用错误
+  var xxx = localStorage;
+};
+```
+
+禁止出现“可能不存在的局部引用”：
+```js
+void function() {
+  if(a) {
+    eval('var b=0');
+  }
+  // 此处变量 b 的存在性不可确定
+}();
+```
+
+### 自执行函数
+
+```js
+// 不推荐
+(function() {
+  // ...
+})();
+
++function() {
+  // ...
+}();
+
+// 推荐
+~function() {
+  // ...
+}();
+
+// 最佳
+void function() {
+  // ...
+}();
+```
+
+括号和加号不是上下文无关的，可能受到上文缺分号的影响而出现奇怪的问题，这些问题甚至不会报错，极难调试，所以不推荐此种用法，比如：
+
+```js
+var a = 1
+
++function() {
+  return 2
+}();
+
+// 此处 a 的值为 3 
+```
+
+使用一元运算符可以避免这种问题，但是逻辑非和按位非这两个运算符太小，容易看漏。建议使用 `void` 运算符，以后一看到 `void function` 就知道是自执行函数，非常显眼。
+
+
+### 禁止事项
+
+* 禁止使用`eval`，非用不可时可以使用`Function`构造器替代。
+* 禁止使用`with`语句。
+* 禁止在块作用域中使用函数声明语句。
+
+```js
+if(true) {
+  // 禁止
+  function func1() {
+    // ...
+  }
+  // 推荐
+  var func2 = function(){
+    // ...
+  };
+}
+```
+
+
 
