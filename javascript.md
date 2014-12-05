@@ -115,7 +115,6 @@ var foo_bar = 'hello eleme';
 var fooBar = 'hello eleme';
 ```
 
-
 ### 常量大写
 
  ```js
@@ -126,7 +125,6 @@ var Prefix = 'http://api.ele.me/v1/'
 // 推荐
 var PREFIX = 'http://api.ele.me/v1/';
 ```
-
 
 ### 使用字面量
 
@@ -149,7 +147,6 @@ var inf = 1 / 0;
 // var undef = undefined;
 var udf = void 0;
 ```
-
 
 ### 比较
 
@@ -230,6 +227,45 @@ var a = 1
 
 使用一元运算符可以避免这种问题，但是逻辑非和按位非这两个运算符太小，容易看漏。建议使用 `void` 运算符，以后一看到 `void function` 就知道是自执行函数，非常显眼。
 
+### 避免嵌套过深
+
+可以使用 `Promise` 解决深层嵌套问题：
+
+```js
+// 不推荐
+async1(function(){
+  // TODO 1
+  async2(function(){
+    // TODO 2
+    async3(function(){
+      // TODO 3
+    });
+  });
+});
+
+// 推荐
+Promise.resolve()
+  .then(function() {
+    return new Promise(function(resolve) {
+      async1(resolve);
+    });
+  })
+  .then(function() {
+    // TODO 1
+    return new Promise(function(resolve) {
+      async2(resolve);
+    });
+  })
+  .then(function() {
+    // TODO 2
+    return new Promise(function(resolve) {
+      async3(resolve);
+    });
+  })
+  .then(function() {
+    // TODO 3
+  });
+```
 
 ### 禁止事项
 
