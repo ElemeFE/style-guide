@@ -1,173 +1,46 @@
-## HTML / Template Style Guide
+## HTML 代码风格规范
 
-在实际项目中，HTML 大多由模板生成，在「饿了么」我们使用 [Twig](http://twig.sensiolabs.org/) 作为后端输出的模板。
-
-
-### 1. DTD
-
-使用 `<!DOCTYPE html>` 作为唯一的 DTD。它简洁，并能在所有浏览器触发标准模式。
-
-### 2. 使用双引号
-
-```html
-<!-- 不推荐 -->
-<button ng-click='hi(":-|")'>Hi</button>
-
-<!-- 推荐 -->
-<button ng-click="hi(':-|')">Hi</button>
-```
-
-### 3. 编码
-
-在 `<head>` 中明确指定文件编码 `<meta charset="UTF-8">`。
-
-### 4. 标签
-
-在 HTML 文档的所有标签和属性应小写：
-
-```html
-<!-- 不推荐 -->
-<A HREF="http://ele.me" TITLE="饿了么">ELE.ME</A>
-
-<!-- 推荐 -->
-<a href="http://ele.me" title="饿了么">ELE.ME</a>
-```
-
-尽可能保持标签的闭合：自闭合标签无需添加结尾的斜杆 `/`：
-
-```html
-<!-- 不推荐 -->
-<p>hello world
-
-<!-- 推荐 -->
-<p>hello world</p>
-```
-
-```html
-<!-- 不推荐 -->
-<meta charset="UTF-8" />
-
-<!-- 推荐 -->
-<meta charset="UTF-8">
-```
-
-另外，在保持语义的同时，请用尽可能少地使用标签来编写你 HTML 的结构：
-
-```html
-<!-- 不推荐 -->
-<ul>
-  <li>
-    <span>Lorem Ipsum</span>
-    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-  <li>
-  ...
-
-<!-- 推荐 -->
-<ul>
-  <li>Lorem Ipsum
-    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-  <li>
-  ...
-```
-
-### 5. 浏览器标题
-
-为每个页面提供相对应的标题。避免用户打开多个 Tab/窗口 时很难找到对应的网页。
-
-### 6. 语义
-
-恰当地使用标签，标题对应 `h1~6`，引用对应 `blockquote`，简单的表格请直接使用 `table` 等。而不是到处 `div / span`：
-
-```html
-<!-- 不推荐 -->
-<div>ELE.ME Code Style Guide</div>
-<div>The description is blah blah blah....</div>
-
-<!-- 推荐 -->
-<h1>ELE.ME Code Style Guide</h1>
-<p>The description is blah blah blah....</p>
-```
-
-语义是呈现形式，也包含行为，比如 `a` 被设计为页面之间的联系，在能用它来进行跳转的情况下，尽可能按照浏览器行为来编写代码，不要使用其他替代方式：
-
-```html
-<!-- 不推荐 -->
-<div onclick="window.location = http://ele.me">ELE.ME</a>
-
-<!-- 推荐 -->
-<a href="http://ele.me">ELE.ME</a>
-```
-
-### 7. 分离表现与行为
-
-尽可能不要添加行内样式和脚本，你可以定义一个钩子（如 `class="abc"`）以便在 CSS 或者 JS 中对其进行样式和行为的定义：
-
-```html
-<!-- 不推荐 -->
-<div onclick="alert(this.textContent)" style="color:red" class="abc">ELE.ME</a>
-<style>.abc{font-size: 12px}</style>
-
-<!-- 推荐 -->
-<div class="abc"></div>
-```
-
-### 8. 外部资源加载
-
-尽量在 `head` 标签内用 `link` 的方式加载页面所需样式，在 `body` 结束前添加 `script`，并改可能使用异步的方式加载。对于大文件，比如 icon font 等，最好在 `body` 标签结束前的位置添加，而不是在 `head`：
-
-```html
-<!-- 不推荐 -->
-<head>
-  <meta charset="utf-8">
-  <title>饿了么</title>
-  <link rel="stylesheet" href="/msite/dist/css/msite.css">
-  <script src="/msite/js/app.js"></script>
-</head>
-
-<body></body>
-
-<!-- 推荐 -->
-<head>
-  <meta charset="utf-8">
-  <title>饿了么</title>
-  <link rel="stylesheet" href="/msite/dist/css/msite.css">
-</head>
-
-<body>
-  <!-- codes -->
+* 尽可能地简化 HTML 结构，但不要求减少使用 HTML 标签。<br/>
+  理由：我们是前后端分离的架构，所有模板都是静态，模板的大小对服务器几乎没影响。
+* 所有标签和属性名称一律小写。<br/>
+  理由：如果不这么做可能导致与 Angular 的不兼容。
+* 属性值一律使用双引号。<br/>
+  理由：统一是必须的，难道会有人想统一成单引号？
+* 在没有特殊需求的情况下不省略可选的结束标签。<br/>
+  理由：这样更容易看出标签的范围，但是要注意下面这种特殊情况。
   
-  <script src="/msite/js/app.js"></script>
-</body>
+```HTML
+<style>
+li { display: inline-block; }
+</style>
+<ul>
+  <li>1</li>
+  <li>2</li>
+</ul>
+<ul>
+  <li>1
+  <li>2
+</ul>
 ```
 
-### 9. 替代方案
-
-从可访问性解决看来，对于盲人来说，图片、视频、输入框等不能直接阅读的内容，应提供相应的替代方案；从网络方面来看，图片、视频、音频等可能加载比较慢，或者异常，不要直接给用户留一个空白：
-
-```html
-<!-- 不推荐 -->
-<img src="beauty.png">
-
-<!-- 推荐 -->
-<img src="beauty.png" alt="a beautiful lady is smiling">
+* 不省略可选的自结束标签末尾斜杠。<br/>
+  理由：它会影响到外部标记语言的解析。
+```HTML
+<svg width="200" height="200">
+  <!-- 如果此处 rect 末尾没有斜杠会产生嵌套关系，使 circle 无法显示 -->
+  <rect width="200" height="200" fill="#000" />
+  <circle cx="100" cy="100" r="100" fill="#fff" />
+</svg>
 ```
-
-### 10. 流媒体
-
-像 `video` `audio` `object` `embed` 是比较复杂的格式，处理起来比较麻烦。通常我们可以这样做：
-
-- 为视听媒体提供相应的文本，包括相应的场景，比如演讲中的鼓掌等有利有阅读者感知现在气氛的，都应该体现在演讲文本中。其他的依此类推。
-- 如果像交响乐这种不能提供具体描述的，可以进行简单的说明
-- 如果文本较长，不能在当前页面展示，可以在媒体后提供一个链接到相应替代文本的链接
-- 如果媒体中有可能会引起癫痫发作的，应做相应的说明
-
-```html
-<!-- 不推荐 -->
-<audio src="mozart.mp4"></audio>
-
-<!-- 推荐 -->
-<audio src="mozart.mp4">莫扎特39号交响曲</audio>
+* 建议自结束标签包含属性时在结束的斜杆前面加空格。<br/>
+  理由：这是 XHTML 规范？其实我只是觉得这样比较漂亮。
+```HTML
+<input type="text" />
+<hr/>
 ```
-
-
-
+* 建议无值属性不写等号和值。<br/>
+  理由：这个真没必要写，不过 DOM 操作时可能会写。
+```HTML
+<input type="checkbox" checked />
+<script src="···" async defer></script>
+```
