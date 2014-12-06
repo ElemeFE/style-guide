@@ -59,7 +59,7 @@ if(foo && hello) {
 ; 
 ```
 
-建议在今后需要完善的代码中注释以 `//TODO`。
+建议在今后需要完善的代码中注释以 `// TODO`。
 
 ```js
 if(true) {
@@ -199,7 +199,7 @@ function fee(){
 }
 
 // 推荐
-var foo=function() {
+var foo = function() {
   // ...
 };
 ```
@@ -228,7 +228,7 @@ var foo = function() {
 element.onclick = foo;
 
 // 推荐
-element.onclick=function() {
+element.onclick = function() {
   // ...
 };
 ```
@@ -322,9 +322,25 @@ if(true) {
   function func1() {
     // ...
   }
-  // 推荐
+  // 允许
   var func2 = function(){
     // ...
   };
 }
+```
+
+* 禁止使用 8 进制词法
+
+```js
+// true
+if(010 === 8);
+```
+
+* 禁止使用 `arguments` 映射
+
+```js
+void function(a){
+  arguments[0]++;
+  // 此处 a 为 2
+}(1);
 ```
