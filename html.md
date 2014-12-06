@@ -150,6 +150,7 @@ module.controller('foo', ['$scope', function($scope) {
     '此处省略100字';
   };
 }]);
+```
 
 ### 其它建议
 
