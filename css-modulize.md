@@ -94,34 +94,7 @@
 </div>
 ```
 
-### 后代选择问题
-
-强烈建议不使用后代选择器，允许使用子选择器和标签选择器。
-
-原因是后代选择器会影响到嵌套在其中的其它组件或内容。
-
-此处没有禁止后代选择器的使用，在非用不可时依然可以使用，请详细注释原因。
-
-```HTML
-<style>
-.table {}
-.table-thead > tr { /* 给 thead 下的 tr 设置样式，不影响到后代 */ }
-.table-tbody > tr > td { /* 给 tbody 下的 td 设置样式，不会影响到后代 */ }
-.table-tr { /* 给所有 table 组件的 tr 设置样式 */ }
-</style>
-<table class="table">
-  <thead class="table-thead">
-    <tr class="table-tr"></tr>
-    <tr class="table-tr"></tr>
-    <tr class="table-tr"></tr>
-  </thead>
-  <tbody class="table-tbody">
-    <tr class="table-tr"></tr>
-    <tr class="table-tr"></tr>
-    <tr class="table-tr"></tr>
-  </tbody>
-</div>
-```
+### 保持结构灵活性
 
 我们的设计应该尽可能地让样式可以用于更多标签。
 
@@ -141,49 +114,29 @@
 </dl>
 ```
 
-### 自嵌套问题（不建议出现自嵌套结构）
-
-实际运用中很可能出现组件自嵌套的情况，此时不该覆写样式，推荐使用以下方案。
+甚至可以任意调整结构。
 
 ```HTML
 <style>
-.section {}
-.section-head {}
-.section-body {}
-.main {}
-.main-outer {}
-.main-inner {}
+.article {}
+.article-main {}
+.article-title {}
 </style>
-<div class="main">
-  <dl class="section main-outer">
-    <dt class="section-head"></dt>
-    <dd class="section-body">
-      <dl class="section main-inner">
-        <dt class="section-head"></dt>
-        <dd class="section-body"></dd>
-      </dl>
-    </dd>
-  </dl>
+<div class="article">
+  <div class="article-main">
+    <div class="article-title">
+      <!-- ... -->
+    </div>
+    <!-- ... -->
+  </div>
 </div>
-```
-
-如果以上方法不方便，也可以使用子选择器解决，这是备选方案。
-
-```HTML
-<style>
-.dropdown > ul { /* level-1 */ }
-.dropdown > ul > li > ul { /* level-2 */ }
-</style>
-<div class="dropdown">
-  <ul class="menu">
-    <li>
-      <ul class="menu">
-        <li></li>
-      </ul>
-    </li>
-    <li>······</li>
-  </ul>
-  ······
+<div class="article">
+  <div class="article-title">
+    <!-- ... -->
+  </div>
+  <div class="article-main">
+    <!-- ... -->
+  </div>
 </div>
 ```
 
