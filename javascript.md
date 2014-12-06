@@ -85,6 +85,10 @@ if(foo) {
 // 只有一行语句时允许不带括号
 if(foo) doSomething();
 for(var i = 0; i < 10; i++) doSomething();
+
+// 语句太长时允许写成两行，但建议写在同一行
+for(var i = 0; i < 10; i++)
+  doSomething(aaaa, bbbb, cccc, dddd, eeee);
 ```
 
 ### 变量的命名
@@ -122,14 +126,6 @@ var array = new Array();
 var str = '';
 var obj = {};
 var array = [];
-
-// 这里顺便普及一些高性能写法
-// var nan = NaN;
-var nan = 0 / 0;
-// var inf = Infinity;
-var inf = 1 / 0;
-// var undef = undefined;
-var udf = void 0;
 ```
 
 ### 比较
@@ -168,10 +164,32 @@ if(a == 0);
 对于可能不存在的全局引用可以先做如此判断：
 
 ```js
+if(typeof localStorage !== 'undefined'){
+  // 此时访问 localStorage 绝对不会出现引用错误
+};
+```
+
+或者
+
+```js
 if('localStorage' in self){
   // 此时访问 localStorage 绝对不会出现引用错误
-  var xxx = localStorage;
 };
+```
+
+但注意它们的区别
+
+```js
+var a = undefined;
+
+// true
+// 判断一个全局变量是否有声明
+"a" in self;
+
+// false
+// 判断一个变量是否为 undefined 并将未声明的引用作为 undefined 处理
+typeof a !== 'undefined';
+
 ```
 
 ### var 语句
@@ -250,7 +268,7 @@ element.onclick = function() {
   // ...
 }();
 
-// 最佳
+// 推荐
 void function() {
   // ...
 }();
@@ -268,7 +286,7 @@ var a = 1
 // 此处 a 的值为 3 
 ```
 
-使用一元运算符可以避免这种问题，但是逻辑非和按位非这两个运算符太小，容易看漏。建议使用 `void` 运算符，以后一看到 `void function` 就知道是自执行函数，非常显眼。
+使用一元运算符可以避免这种问题，但是逻辑非和按位非这两个运算符太小，容易看漏。
 
 ### 避免嵌套过深
 
@@ -312,8 +330,8 @@ Promise.resolve()
 
 ### 禁止事项
 
-* 禁止使用`eval`，非用不可时可以使用`Function`构造器替代。
-* 禁止使用`with`语句。
+* 禁止使用 `eval`，非用不可时可以使用 `Function` 构造器替代。
+* 禁止使用 `with` 语句。
 * 禁止在块作用域中使用函数声明语句。
 
 ```js
