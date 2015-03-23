@@ -169,3 +169,26 @@
 ```
 
 这样可以避免嵌套的冲突问题。
+
+基于功能命名(Functional Class Names)，而非基于表现命名(Presentational Class Names)，也不要基于内容命名(Content-Based Class Names)。
+
+```CSS
+<button class=“green-button”>Send Message</button> // Not recommend (Based on presentation)
+
+<button class=“submit-button”>Send Message</button> // Not recommend (based on content)
+
+<button class=“positive-button”>Send Message</button> // recommend
+```
+
+基于表现命名的方式会将你的 html 和 css 紧密耦合，同时降低类名的扩展性，以及额外的记忆负担。
+基于表现命名的常见问题有两个：
+
+1. 难以适应需求变更。
+   假设我们写了一个这样的样式：`.red {color: red}`, 有一天产品<del>汪</del>觉得绿色实际上更好，那现在你有两个选择：全局替换所有的 red class 和 dom 操作涉及到 red 的地方，然后改为 green，或者这样写 `.red {color: green}` 。后者的弊端不用说，可能你会说，现在 IDE 很强大，我全局替换不会出问题，那我们来看基于表现命名的第二个问题
+
+2. 表意不明或记忆负担
+   当我们的网站越做越大了，我们的红色除了表示警告之外，我们还需要一种暧昧的红色来表示赞的操作，这时你或许会这么写：`.light-red {color: #d72115}`，很好。那么产品<del>汪</del>又来了，他说我们要做一个彩虹的展示... 好了，你现在有两个选择：`.light-red-1, .light-red-2, dark-blue-3...` 或者去学习专业的英文。
+
+综上，不推荐在项目中使用基于表现命名的 CSS。
+
+基于内容的命名同样会提高你 html 和 css 代码的藕合度，同时通用性很差，很可能 `submit-button` 和 `upload-button` 样式完全相同。最终你会面临一个两难的抉择：是再写一个完全一样的 css 代码片段，还是用 `submit-button` 替代 `upload-button` 挂羊头卖狗肉？
