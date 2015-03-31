@@ -7,7 +7,7 @@
 
 ### zindex使用规范
 
-`zindex.scss`用来统一项目中的z-index值，方便管理z-index的层级关系，避免z-index的值过大或者层级相互覆盖。
+`zindex.scss` 用来统一项目中的 z-index 值，方便管理 z-index 的层级关系，避免 z-index 的值过大或者层级相互覆盖。
 
 ```SASS
 $zindexlist:
@@ -20,7 +20,7 @@ $zindexlist:
   modal                    /* 浮动弹出框 */
 ```
 
-`$zindexlist`中的数组元素决定z-index值，从上到下z-index值越大，层级越高。
+`$zindexlist` 中的数组元素决定 z-index 值，从上到下 z-index 值越大，层级越高。
 
 #####使用方法：
 
@@ -28,6 +28,6 @@ $zindexlist:
 @include zindex($ele);
 ```
 
-* `$ele`参数值，需要在`$zindexlist`中定义数组元素，注意变量的位置；
-* 也可以使用`$zindexlist`中的已经定义的数组元素，但需要注意以后增删改不会有影响；
+* `$ele` 参数值，需要在 `$zindexlist` 中定义数组元素，注意变量的位置；
+* 也可以使用 `$zindexlist` 中的已经定义的数组元素，但需要注意以后增删改不会有影响；
 * 只支持正数，负数还是按照普通的方式。
