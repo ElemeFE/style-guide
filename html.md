@@ -61,6 +61,11 @@ li { display: inline-block; }
 * 所有 `<a>` 必须有 `href` 属性，如果用不到可以置为 `href="JavaScript:"`。<br/>
   理由：`href` 不是可选属性，只是浏览器能解析而已。
 
+### 最佳实践
+
+* 不要使用 `input` （`<input type="button">` 、 `<input type="submit">`）来代替 `button` <br/>
+  理由：给这类 `input` 只设置 `height` 属性的话，在 `safari` 和 `chrome` 下并不会出现意料中的样式。另外，`button` 看起来更优雅不是？
+
 ### 声明相关
 
 * 使用 `<!DOCTYPE html>` 作为唯一的 DTD。<br/>
