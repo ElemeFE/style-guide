@@ -56,14 +56,14 @@ if(foo && hello) {
 
 /* 推荐 */
 // 推荐
-; 
+;
 ```
 
 建议在今后需要完善的代码中注释以 `// TODO`。
 
 ```js
 if(true) {
-  console.log("尚未实现");
+  console.log('尚未实现');
   // TODO
 }
 ```
@@ -72,11 +72,11 @@ if(true) {
 
 ```js
 // 不推荐
-if(foo) 
+if(foo)
 {
   // ...
 }
-  
+
 // 推荐
 if(foo) {
   // ...
@@ -98,7 +98,7 @@ for(var i = 0; i < 10; i++)
 ```js
 // 不推荐
 var foo_bar = 'hello eleme';
-  
+
 // 推荐
 var fooBar = 'hello eleme';
 ```
@@ -109,7 +109,7 @@ var fooBar = 'hello eleme';
 // 不推荐
 var prefix = 'http://api.ele.me/v1/';
 var Prefix = 'http://api.ele.me/v1/'
-  
+
 // 推荐
 var PREFIX = 'http://api.ele.me/v1/';
 ```
@@ -121,7 +121,7 @@ var PREFIX = 'http://api.ele.me/v1/';
 var str = new String('str');
 var obj = new Object();
 var array = new Array();
-  
+
 // 推荐
 var str = '';
 var obj = {};
@@ -165,17 +165,17 @@ if(a == 0);
 对于可能不存在的全局引用可以先做如此判断：
 
 ```js
-if(typeof localStorage !== 'undefined'){
+if(typeof localStorage !== 'undefined') {
   // 此时访问 localStorage 绝对不会出现引用错误
-};
+}
 ```
 
 或者
 
 ```js
-if('localStorage' in self){
+if('localStorage' in self) {
   // 此时访问 localStorage 绝对不会出现引用错误
-};
+}
 ```
 
 但注意它们的区别
@@ -185,7 +185,7 @@ var a = undefined;
 
 // true
 // 判断一个全局变量是否有声明
-"a" in self;
+'a' in self;
 
 // false
 // 判断一个变量是否为 undefined 并将未声明的引用作为 undefined 处理
@@ -213,7 +213,7 @@ var foo, fee, fxx;
 
 ```js
 // 不推荐
-function fee(){
+function fee() {
   // ...
 }
 
@@ -229,9 +229,9 @@ var foo = function() {
 void function() {
   // 此处可以正常使用函数，但逻辑不清晰
   foo();
-  
+
   return null;
-  
+
   function foo() {};
 }();
 
@@ -278,13 +278,13 @@ void function() {
 括号和加号不是上下文无关的，可能受到上文缺分号的影响而出现奇怪的问题，这些问题甚至不会报错，极难调试，所以不推荐此种用法，比如：
 
 ```js
-var a = 1
+var a = 1;
 
 +function() {
   return 2
 }();
 
-// 此处 a 的值为 3 
+// 此处 a 的值为 3
 ```
 
 ### 避免嵌套过深
@@ -293,11 +293,11 @@ var a = 1
 
 ```js
 // 不推荐
-async1(function(){
+async1(function() {
   // TODO 1
-  async2(function(){
+  async2(function() {
     // TODO 2
-    async3(function(){
+    async3(function() {
       // TODO 3
     });
   });
@@ -340,7 +340,7 @@ if(true) {
     // ...
   }
   // 允许
-  var func2 = function(){
+  var func2 = function() {
     // ...
   };
 }
@@ -356,7 +356,7 @@ if(010 === 8);
 * 禁止使用 `arguments` 映射
 
 ```js
-void function(a){
+void function(a) {
   arguments[0]++;
   // 此处 a 为 2
 }(1);
