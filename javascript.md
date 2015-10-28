@@ -103,6 +103,29 @@ var foo_bar = 'hello eleme';
 var fooBar = 'hello eleme';
 ```
 
+尽可能做到见名知意：
+
+```js
+// 不推荐
+var item;
+var list;
+
+// 推荐
+var selectedNode;
+var selectedNodeList;
+```
+
+数组的命名使用名词的复数形式或 List：
+
+```js
+// 不推荐
+var fooBar = [foo, bar];
+
+// 推荐
+var fooBars = [foo, bar];
+var fooBarList = [foo, bar];
+```
+
 ### 常量大写
 
  ```js
@@ -331,6 +354,7 @@ Promise.resolve()
 
 * 禁止使用 `eval`，非用不可时可以使用 `Function` 构造器替代。
 * 禁止使用 `with` 语句。
+* 禁止使用 `for in` 循环遍历数组。
 * 禁止在块作用域中使用函数声明语句。
 
 ```js
