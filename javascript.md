@@ -199,7 +199,7 @@ if (test) {
 
 ### var 语句
 
-## 使用变量之前必须先定义，不要定义全局变量。
+#### 使用变量之前必须先定义，不要定义全局变量。
 
 ```js
 
@@ -230,25 +230,36 @@ for (var i = 0; i < elements.length; ++i) {
 }
 ```
 
-## 如果变量有初始赋值则使用单独的 `var`：
+#### 如果变量有初始赋值则使用单独的 `var`：
 
 ```js
-// 不推荐
+// 禁止
 var hello = 1, world = 2;
-
-// 不推荐
-var hello = 1,
-    world = 2;
-
-// 因为有可能手一抖写成
-var hello = 1;   // 此处是分号
-    world = 2;
 
 // 推荐
 var hello = 1;
 var world = 2;
 var foo, fee, fxx;
 ```
+
+另外强调，禁止使用下面这种风格的变量定义方式。
+
+```js
+// 禁止
+var hello = arr.pop(),
+    world = arr.pop();
+```
+
+```js
+// 禁止
+var hello = arr.pop()
+  , world = arr.pop();
+```
+
+原因：
+
+1. 当需要修改变量定义顺序时不容易做整行移动
+2. 过不了 eslint 的 indent 验证
 
 #### 变量的命名
 
