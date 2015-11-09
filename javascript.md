@@ -233,7 +233,7 @@ for (var i = 0; i < elements.length; ++i) {
 #### 如果变量有初始赋值则使用单独的 `var`：
 
 ```js
-// 禁止
+// 不推荐
 var hello = 1, world = 2;
 
 // 推荐
@@ -242,16 +242,16 @@ var world = 2;
 var foo, fee, fxx;
 ```
 
-另外强调，禁止使用下面这种风格的变量定义方式。
+另外强调，不推荐使用下面这种风格的变量定义方式。
 
 ```js
-// 禁止
+// 不推荐
 var hello = arr.pop(),
     world = arr.pop();
 ```
 
 ```js
-// 禁止
+// 不推荐
 var hello = arr.pop()
   , world = arr.pop();
 ```
