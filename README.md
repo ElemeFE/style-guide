@@ -9,6 +9,10 @@
 * [CSS 模块化命名规则](css-modulize.md)
 * [JavaScript 代码风格](javascript.md)
 
+#### 协作规范
+* [Git 使用规范](git.md)
+
+
 #### 环境兼容
 
 兼容 IE8 以上浏览器，永远保持与市场最新的环境兼容。
