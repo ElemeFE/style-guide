@@ -20,7 +20,7 @@ Angular 项目中 `ng-resource` 使用不受影响.
 * fetch API https://davidwalsh.name/fetch
 * Basic Fetch Request https://developers.google.com/web/updates/2015/03/introduction-to-fetch
 * Using Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-* Fetch Living Standard https://fetch.spec.whatwg.org/#authentication-entries
+* Fetch Living Standard https://fetch.spec.whatwg.org/
 
 ## 建议写法
 
@@ -99,3 +99,6 @@ fetch(`${APIHOST}/users/${userId}/a/${id}`, options)
 * 管理 APIHOST 的函数
 * 生成 `fetch` 的 options 参数中公用的参数
 * ...
+
+内部讨论请在 Slack 查找 `#style-guide`
+
