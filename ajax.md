@@ -44,7 +44,7 @@ let options = {
     phone: info.phone,
     address: info.address
   })
-}
+};
 
 fetch(`${APIHOST}/users/${userId}/a/${id}`, options)
 .then(function(response) {
@@ -79,7 +79,7 @@ let options = {
     phone: info.phone,
     address: info.address
   })
-}
+};
 
 // fetch 的 url 要写明确, 保证看到 fetch 能马上看明白 url
 fetch(`${APIHOST}/users/${userId}/a/${id}`, options)
