@@ -29,7 +29,7 @@ Angular 项目中 `ng-resource` 使用不受影响.
 ```js
 fetch(`${APIHOST}/url/api`)
 .then(function(response) {
-	console.log(response.json());
+  console.log(response.json());
 }).catch(function(error) {
 });
 ```
@@ -48,7 +48,7 @@ let options = {
 
 fetch(`${APIHOST}/users/${userId}/a/${id}`, options)
 .then(function(response) {
-	console.log(response.json());
+  console.log(response.json());
 }).catch(function(error) {
 });
 ```
@@ -85,7 +85,7 @@ let options = {
 fetch(`${APIHOST}/users/${userId}/a/${id}`, options)
 // then, catch 写在一行开头, 避免出现在后面看不清楚
 .then(function(response) {
-	console.log(response.json());
+  console.log(response.json());
 }).catch(function(error) {
 });
 ```
