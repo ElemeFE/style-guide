@@ -42,7 +42,7 @@
 ```HTML
 <div class="uploader">
   <input type="text" class="uploader-text" />
-  <input type="button" class="uploader-button" />
+  <button class="uploader-button"></button>
 </div>
 ```
 
