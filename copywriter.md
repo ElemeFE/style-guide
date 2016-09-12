@@ -46,7 +46,7 @@
 - 为谁服务？
 - 如何使用？
 - 如何为它贡献代码 / 内容？[CONTRIBUTING.md](https://github.com/blog/1184-contributing-guidelines)
-- 是否有设计 / 架构介a
+- 是否有设计 / 架构介绍
 
 
 
