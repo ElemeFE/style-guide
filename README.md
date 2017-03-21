@@ -10,6 +10,7 @@
 * [CSS 模块化命名规则](https://github.com/ElemeFE/style-guide/blob/master/css-modulize.md)
 * [JavaScript 代码风格](https://github.com/ElemeFE/style-guide/blob/master/javascript.md)
 * [文案风格](https://github.com/ElemeFE/style-guide/blob/master/copywriter.md)
+* [技术文章是怎么样炼成的](https://github.com/ElemeFE/style-guide/blob/master/technical-article.md)
 
 #### 环境兼容
 
