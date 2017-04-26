@@ -35,11 +35,9 @@ li { display: inline-block; }
   理由：它会影响到外部标记语言的解析。
 
 ```html
-<svg width="200" height="200">
-  <!-- 如果此处 rect 末尾没有斜杠会产生嵌套关系，使 circle 无法显示 -->
-  <rect width="200" height="200" fill="#000" />
-  <circle cx="100" cy="100" r="100" fill="#fff" />
-</svg>
+<div>
+  <img src="eleme.png" alt="饿了么" />
+</div>
 ```
 
 * 建议自结束标签包含属性时在结束的斜杆前面加空格。<br/>
@@ -58,13 +56,13 @@ li { display: inline-block; }
 <script src="···" async defer></script>
 ```
 
-* 所有 `<a>` 必须有 `href` 属性，如果用不到可以置为 `href="JavaScript:"`。<br/>
+* 所有 `<a>` 必须有 `href` 属性，如果用不到可以置为 `href="javascript:"`。<br/>
   理由：`href` 不是可选属性，只是浏览器能解析而已。
 
 ### 最佳实践
 
 * 不要使用 `input` （`<input type="button">` 、 `<input type="submit">`）来代替 `button` <br/>
-  理由：给这类 `input` 只设置 `height` 属性的话，在 `safari` 和 `chrome` 下并不会出现意料中的样式。另外，`button` 看起来更优雅不是？
+  理由：给这类 `input` 只设置 `height` 属性的话，在 `safari` 和 `chrome` 下并不会出现意料中的样式。另外，`button` 可以内嵌 HTML，实现更灵活的结构，如：带图标的按钮。
 
 ### 声明相关
 
@@ -134,7 +132,7 @@ $("#btn").click(function() {
 ```
 
 * 不在视图中处理复杂逻辑，事件处理代码过长时做成函数。<br/>
-  理由：在视图中堆积逻辑会影响代码阅读。
+  理由：在视图中堆积逻辑会影响代码阅读和维护。
 
 ```html
 <!-- 不推荐 -->

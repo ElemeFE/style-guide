@@ -12,10 +12,10 @@
 ```SASS
 $zindexlist:
   searchbox                /* 搜索框 */
-  premiumsign              /* 在rstblock中显示的品牌馆图标 */
-  dropbox                  /* 显示信息的hover浮动框 */
+  premiumsign              /* 在 rstblock 中显示的品牌馆图标 */
+  dropbox                  /* 显示信息的 hover 浮动框 */
   sidebar                  /* 右侧栏 */
-  toolbardropbox           /* 右侧栏显示信息的hover浮动框 */
+  toolbardropbox           /* 右侧栏显示信息的 hover 浮动框 */
   modalshade               /* 浮动弹出框遮罩 */
   modal                    /* 浮动弹出框 */
 ```
