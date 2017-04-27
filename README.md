@@ -11,6 +11,10 @@
 * [JavaScript 代码风格](https://github.com/ElemeFE/style-guide/blob/master/javascript.md)
 * [文案风格](https://github.com/ElemeFE/style-guide/blob/master/copywriter.md)
 
+#### 协作规范
+* [Git 使用规范](git.md)
+
+
 #### 环境兼容
 
 兼容 IE9 以上浏览器，永远保持与市场最新的环境兼容。
