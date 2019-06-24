@@ -87,7 +87,7 @@
 <div class="module">
   <div class="module-caption">
     <div class="module-caption-content"> <!-- 推荐:低层嵌入高层 -->
-      <div class="module-text"></div> <!-- 不建议:高层嵌如低层 -->
+      <div class="module-text"></div> <!-- 不建议:高层嵌入低层 -->
     </div>
     <!-- 允许:同级嵌套 -->
     <div class="module-captioncontent">
